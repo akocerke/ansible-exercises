@@ -1,5 +1,6 @@
+# Terraform
 # Local .terraform directories
-**/.terraform/*
+.terraform/
 .terraform.lock.hcl
 
 # .tfstate files
@@ -10,10 +11,11 @@
 crash.log
 crash.*.log
 
+# Terraform plan output files
+*.tfplan
+
 # Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
-# to change depending on the environment.
+# passwords, private keys, and other secrets.
 *.tfvars
 *.tfvars.json
 
@@ -24,12 +26,44 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
-
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
-
-# Ignore CLI configuration files
+# CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ansible
+# Ansible Vault files (sensitive data)
+*.vault
+
+# Ignore Ansible roles and collections (you may include if you use them)
+roles/
+collections/
+
+# Ignore Ansible logs
+*.log
+
+# Ignore local environment files
+.env
+.ansible/
+*.retry
+
+# Ignore any other sensitive files or directories
+secret/
+credentials/
+*.pem
+*.key
+*.pub
+
+# Exclude IDE and editor specific files
+# Example for VS Code
+.vscode/
+*.code-workspace
+
+# Example for JetBrains IDEs
+.idea/
+
+# Exclude OS-specific files
+.DS_Store
+Thumbs.db
+
+# Exclude node_modules if you use node.js (e.g., for scripting tasks)
+node_modules/
