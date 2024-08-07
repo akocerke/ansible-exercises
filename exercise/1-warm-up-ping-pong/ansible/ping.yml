@@ -1,0 +1,7 @@
+---
+- name: Test connection to the EC2 instance
+  hosts: webserver
+  gather_facts: false
+  tasks:
+    - name: Ping the EC2 instance
+      ansible.builtin.ping:
