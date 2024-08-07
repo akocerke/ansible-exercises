@@ -1,9 +1,9 @@
 ---
-- name: Vault
-  hosts: secret_service
+- name: Exercise 3
+  hosts: ex2_hosts
   vars_files:
-    - <geheime-datei>
+    - secret.yml
   tasks: 
     - name: Show Password
       debug:
-        var: <geheime-variable>
+        var: geheim
