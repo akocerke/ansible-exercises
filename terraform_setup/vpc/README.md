@@ -15,3 +15,11 @@ terraform {
   }
 }
 ```
+---
+# CHECK ✅
+
+<img src="image.png" alt="vpc" width="400" />
+
+<img src="image-1.png" alt="s3" width="150" />
+
+<img src="image-2.png" alt="vpc2" width="600" />

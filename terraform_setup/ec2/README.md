@@ -41,3 +41,12 @@ data "terraform_remote_state" "vpc" {
 key_name="my_key"
 instance_count=4
 ```
+# CHECK ✅
+
+<img src="image.png" alt="ec2" width="400" />
+
+<img src="image-2.png" alt="sg" width="600" />
+
+<img src="image-1.png" alt="ec2-1" width="600" />
+
+
