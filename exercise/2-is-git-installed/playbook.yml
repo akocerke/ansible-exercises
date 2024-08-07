@@ -1,0 +1,9 @@
+---
+- name: Exercise 2
+  hosts: ex2_hosts
+  become: yes
+  tasks:
+    - name: Ensure Git is installed
+      yum:
+        name: git
+        state: present
