@@ -1,0 +1,41 @@
+---
+- name: Playbook für ec2-instance-1
+  hosts: ec2-instance-1
+  tasks:
+    - name: Nachricht für ec2-instance-1
+      command: echo 'Hallo von ec2-instance-1'
+
+- name: Playbook für ec2-instance-2
+  hosts: ec2-instance-2
+  tasks:
+    - name: Nachricht für ec2-instance-2
+      command: echo 'Hallo von ec2-instance-2'
+
+- name: Playbook für ec2-instance-3
+  hosts: ec2-instance-3
+  tasks:
+    - name: Nachricht für ec2-instance-3
+      command: echo 'Hallo von ec2-instance-3'
+
+
+- name: Private IP-Adresse für jeden Host ausgeben
+  hosts: all
+  tasks:
+    - name: Private IP-Adresse des Hosts ausgeben
+      command: hostname -I
+      register: host_ip
+
+    - name: Ausgabe der Private IP-Adresse
+      debug:
+        msg: "Private IP-Adresse von {{ inventory_hostname }}: {{ host_ip.stdout }}"
+
+- name: Öffentliche IP-Adresse für jeden Host anzeigen
+  hosts: all
+  tasks:
+    - name: Zeige die öffentliche IP-Adresse des Hosts an
+      command: curl -s ifconfig.me
+      register: public_ip
+
+    - name: Ausgabe der öffentlichen IP-Adresse
+      debug:
+        msg: "Öffentliche IP-Adresse von {{ inventory_hostname }}: {{ public_ip.stdout }}"
