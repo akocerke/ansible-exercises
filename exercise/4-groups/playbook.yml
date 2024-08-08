@@ -1,19 +1,44 @@
 ---
-- name: Groups
-  hosts: ???????????????????????????
-  become: yes
+- name: Playbook für alle Server
+  hosts: servers
   tasks:
-    - name: Ensure Nginx is installed
-      apt:
-        name: nginx
-        state: present
-    - name: Ensure Git is installed
-      apt:
-        name: git
-        state: present
-    - name: Check Git version
-      shell: git -v
-      register: git_version_output
-    - name: Display Git Version
+    - name: Beispielaufgabe für alle Server
+      command: echo "Hallo, Server!"
+      register: echo_all_servers
+
+    - name: Ausgabe des Befehls anzeigen
       debug:
-        var: git_version_output.stdout
+        msg: "{{ echo_all_servers.stdout }}"
+
+- name: Playbook für eine Instanz
+  hosts: ec2-instance-1
+  tasks:
+    - name: Beispielaufgabe für eine Instanz
+      command: echo "Hello, ec2-instance-1"
+      register: echo_single_instance
+
+    - name: Ausgabe des Befehls anzeigen
+      debug:
+        msg: "{{ echo_single_instance.stdout }}"
+
+- name: Playbook für Gruppe_1
+  hosts: Gruppe_1
+  tasks:
+    - name: Beispielaufgabe für Gruppe_1
+      command: echo "Hallo, Gruppe_1"
+      register: echo_group_1
+
+    - name: Ausgabe des Befehls anzeigen
+      debug:
+        msg: "{{ echo_group_1.stdout }}"
+
+- name: Playbook für Gruppe_2
+  hosts: Gruppe_2
+  tasks:
+    - name: Beispielaufgabe für Gruppe_2
+      command: echo "Hallo, Gruppe_2"
+      register: echo_group_2
+
+    - name: Ausgabe des Befehls anzeigen
+      debug:
+        msg: "{{ echo_group_2.stdout }}"
